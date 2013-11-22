@@ -6,17 +6,12 @@
 //  Copyright (c) 2013 Dave Batton. All rights reserved.
 //
 
+#define APPDELEGATE ((DCBAppDelegate *)[UIApplication sharedApplication].delegate)
+
 #import <UIKit/UIKit.h>
 
 @interface DCBAppDelegate : UIResponder <UIApplicationDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
-
-@property (readonly, strong, nonatomic) NSManagedObjectContext *managedObjectContext;
-@property (readonly, strong, nonatomic) NSManagedObjectModel *managedObjectModel;
-@property (readonly, strong, nonatomic) NSPersistentStoreCoordinator *persistentStoreCoordinator;
-
-- (void)saveContext;
-- (NSURL *)applicationDocumentsDirectory;
 
 @end

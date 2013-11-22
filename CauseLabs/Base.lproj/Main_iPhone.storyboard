@@ -1,77 +1,110 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="4451" systemVersion="13A461" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="rQl-PL-IFJ">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="4510" systemVersion="13A603" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="DUb-PT-w4I">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3676"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3742"/>
     </dependencies>
     <scenes>
-        <!--class Prefix:identifier Main View Controller-->
+        <!--Navigation Controller-->
+        <scene sceneID="UTF-M9-CEi">
+            <objects>
+                <navigationController definesPresentationContext="YES" id="DUb-PT-w4I" sceneMemberID="viewController">
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="7ta-l4-kjc">
+                        <rect key="frame" x="0.0" y="0.0" width="0.0" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="rQl-PL-IFJ" kind="relationship" relationship="rootViewController" id="aAh-7b-kCr"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="s4k-ks-OED" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-531" y="-288"/>
+        </scene>
+        <!--Not Connected View Controller-->
+        <scene sceneID="xVB-LF-GWE">
+            <objects>
+                <viewController storyboardIdentifier="DCBNotConnectedViewController" id="1Lm-zq-2eg" customClass="DCBNotConnectedViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="W7b-sg-XKM">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="bMT-h0-wMb">
+                                <rect key="frame" x="20" y="228" width="280" height="44"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Login with Facebook">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="loginToFacebook" destination="1Lm-zq-2eg" eventType="touchUpInside" id="rMm-yR-XrD"/>
+                                </connections>
+                            </button>
+                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" image="DCBCauseLabsLogo" id="7I7-T8-KHZ">
+                                <rect key="frame" x="10" y="121" width="300" height="61"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Drp-rD-2iX" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-531" y="421"/>
+        </scene>
+        <!--Map View Controller - CauseLabs-->
         <scene sceneID="rV5-Y2-ghB">
             <objects>
-                <viewController id="rQl-PL-IFJ" customClass="DCBMainViewController" sceneMemberID="viewController">
+                <viewController id="rQl-PL-IFJ" customClass="DCBMapViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="l9E-07-oys">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <button opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="infoLight" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jqg-sy-dxO">
-                                <rect key="frame" x="278" y="526" width="22" height="22"/>
-                                <fontDescription key="fontDescription" name="Helvetica-Bold" family="Helvetica" pointSize="15"/>
-                                <state key="normal">
-                                    <color key="titleColor" red="0.1960784314" green="0.30980392159999998" blue="0.52156862749999999" alpha="1" colorSpace="calibratedRGB"/>
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <state key="highlighted">
-                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                </state>
-                                <connections>
-                                    <segue destination="kIf-nA-PKG" kind="modal" identifier="showAlternate" modalTransitionStyle="flipHorizontal" id="ZEO-Qe-X3j"/>
-                                </connections>
-                            </button>
+                            <view contentMode="scaleToFill" id="eg3-AD-AbN" userLabel="Map View" customClass="GMSMapView">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <subviews>
+                                    <button opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="infoLight" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" id="jqg-sy-dxO">
+                                        <rect key="frame" x="20" y="526" width="22" height="22"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                        <fontDescription key="fontDescription" name="Helvetica-Bold" family="Helvetica" pointSize="15"/>
+                                        <state key="normal">
+                                            <color key="titleColor" red="0.1960784314" green="0.30980392159999998" blue="0.52156862749999999" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <state key="highlighted">
+                                            <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        </state>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="0.25" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstAttribute="trailing" secondItem="jqg-sy-dxO" secondAttribute="trailing" constant="20" symbolic="YES" id="1ym-A3-aKq"/>
-                            <constraint firstAttribute="bottom" secondItem="jqg-sy-dxO" secondAttribute="bottom" constant="20" symbolic="YES" id="Uf2-YL-3zF"/>
-                        </constraints>
                     </view>
+                    <navigationItem key="navigationItem" title="CauseLabs" id="hxt-gD-sj0">
+                        <barButtonItem key="leftBarButtonItem" systemItem="refresh" id="gdl-1h-64n">
+                            <connections>
+                                <action selector="refresh" destination="rQl-PL-IFJ" id="K4y-WE-7A0"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="Logout" id="Mvz-3J-cIm">
+                            <connections>
+                                <action selector="logoutOfFacebook" destination="rQl-PL-IFJ" id="98B-mC-XPc"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="mapView" destination="eg3-AD-AbN" id="xze-NB-6sf"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="h4L-l5-tyG" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-51" y="182"/>
-        </scene>
-        <!--class Prefix:identifier Flipside View Controller-->
-        <scene sceneID="z9J-Vg-hzE">
-            <objects>
-                <viewController id="kIf-nA-PKG" customClass="DCBFlipsideViewController" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="tg4-aq-CMy">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <subviews>
-                            <navigationBar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" barStyle="black" translatesAutoresizingMaskIntoConstraints="NO" id="hED-2o-FLw">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
-                                <items>
-                                    <navigationItem title="Title" id="caU-JJ-JLf">
-                                        <barButtonItem key="leftBarButtonItem" systemItem="done" id="WuG-Ps-ZbD">
-                                            <connections>
-                                                <action selector="done:" destination="kIf-nA-PKG" id="j28-pm-V55"/>
-                                            </connections>
-                                        </barButtonItem>
-                                    </navigationItem>
-                                </items>
-                            </navigationBar>
-                        </subviews>
-                        <color key="backgroundColor" white="0.25" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstItem="hED-2o-FLw" firstAttribute="leading" secondItem="tg4-aq-CMy" secondAttribute="leading" id="4QI-iY-IyT"/>
-                            <constraint firstItem="hED-2o-FLw" firstAttribute="top" secondItem="tg4-aq-CMy" secondAttribute="top" id="4lF-kP-6dV"/>
-                            <constraint firstItem="hED-2o-FLw" firstAttribute="trailing" secondItem="tg4-aq-CMy" secondAttribute="trailing" id="cVE-3m-sGp"/>
-                        </constraints>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="xlJ-1o-FvB" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="368" y="182"/>
+            <point key="canvasLocation" x="5" y="-288"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="DCBCauseLabsLogo" width="300" height="61"/>
+    </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>

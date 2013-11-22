@@ -7,50 +7,77 @@
 //
 
 #import "DCBAppDelegate.h"
+#import "DCBMapViewController.h"
+#import "DCBNotConnectedViewController.h"
+#import "DCBFacebookManager.h"
+#import <GoogleMaps/GoogleMaps.h>
+#import <FacebookSDK/FacebookSDK.h>
 
-#import "DCBMainViewController.h"
+
+@interface DCBAppDelegate ()
+
+//@property (strong, nonatomic) UIWindow *window;
+@property (strong, nonatomic) UINavigationController *navigationController;
+@property (strong, nonatomic) NSManagedObjectContext *managedObjectContext;
+@property (strong, nonatomic) NSManagedObjectModel *managedObjectModel;
+@property (strong, nonatomic) NSPersistentStoreCoordinator *persistentStoreCoordinator;
+
+@end
+
 
 @implementation DCBAppDelegate
 
-@synthesize managedObjectContext = _managedObjectContext;
-@synthesize managedObjectModel = _managedObjectModel;
-@synthesize persistentStoreCoordinator = _persistentStoreCoordinator;
+
+#pragma mark - UIApplicationDelegate
+
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    // Override point for customization after application launch.
-    DCBMainViewController *controller = (DCBMainViewController *)self.window.rootViewController;
-    controller.managedObjectContext = self.managedObjectContext;
+    [GMSServices provideAPIKey:@"AIzaSyClga5kY_T2PLzjH6UyRGJHGTfnLAIRvOo"];
+
+    self.navigationController = (UINavigationController *)self.window.rootViewController;
+    [self.window makeKeyAndVisible];
+
+    if ([DCBFacebookManager isLoggedIn] == NO) {
+        [self presentNotConnectedViewControllerAnimated:NO];
+    }
+
+    [self startListeningForNotifications];
+
     return YES;
 }
 							
-- (void)applicationWillResignActive:(UIApplication *)application
+
+- (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation
 {
-    // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
-    // Use this method to pause ongoing tasks, disable timers, and throttle down OpenGL ES frame rates. Games should use this method to pause the game.
+    return [[FBSession activeSession] handleOpenURL:url];
 }
 
-- (void)applicationDidEnterBackground:(UIApplication *)application
-{
-    // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later. 
-    // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
-}
-
-- (void)applicationWillEnterForeground:(UIApplication *)application
-{
-    // Called as part of the transition from the background to the inactive state; here you can undo many of the changes made on entering the background.
-}
 
 - (void)applicationDidBecomeActive:(UIApplication *)application
 {
-    // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
+    [[FBSession activeSession] handleDidBecomeActive];
 }
+
 
 - (void)applicationWillTerminate:(UIApplication *)application
 {
-    // Saves changes in the application's managed object context before the application terminates.
     [self saveContext];
 }
+
+
+#pragma mark - Private
+
+
+- (void)presentNotConnectedViewControllerAnimated:(BOOL)animated
+{
+	UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main_iPhone" bundle:nil];
+    DCBNotConnectedViewController *loginViewController = (DCBNotConnectedViewController *)[storyboard instantiateViewControllerWithIdentifier:@"DCBNotConnectedViewController"];
+    [self.navigationController presentViewController:loginViewController
+                                                              animated:animated
+                                                            completion:NULL];
+}
+
 
 - (void)saveContext
 {
@@ -62,11 +89,49 @@
              // abort() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development. 
             NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
             abort();
-        } 
+        }
     }
 }
 
-#pragma mark - Core Data stack
+
+- (NSURL *)applicationDocumentsDirectory
+{
+    return [[[NSFileManager defaultManager] URLsForDirectory:NSDocumentDirectory inDomains:NSUserDomainMask] lastObject];
+}
+
+
+#pragma mark - Notifications
+
+
+- (void)startListeningForNotifications
+{
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(facebookManagerDidLoginToFacebook:)
+                                                 name:DCBFacebookManagerDidLoginToFacebookNotification
+                                               object:nil];
+
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(facebookManagerDidLogoutOfFacebook:)
+                                                 name:DCBFacebookManagerDidLogoutOfFacebookNotification
+                                               object:nil];
+}
+
+
+- (void)facebookManagerDidLoginToFacebook:(NSNotification *)notification
+{
+    [self.navigationController dismissViewControllerAnimated:YES completion:NULL];
+}
+
+
+- (void)facebookManagerDidLogoutOfFacebook:(NSNotification *)notification
+{
+    [self.navigationController popToRootViewControllerAnimated:NO];
+    [self presentNotConnectedViewControllerAnimated:YES];
+}
+
+
+#pragma mark - Core Data
+
 
 // Returns the managed object context for the application.
 // If the context doesn't already exist, it is created and bound to the persistent store coordinator for the application.
@@ -84,6 +149,7 @@
     return _managedObjectContext;
 }
 
+
 // Returns the managed object model for the application.
 // If the model doesn't already exist, it is created from the application's model.
 - (NSManagedObjectModel *)managedObjectModel
@@ -95,6 +161,7 @@
     _managedObjectModel = [[NSManagedObjectModel alloc] initWithContentsOfURL:modelURL];
     return _managedObjectModel;
 }
+
 
 // Returns the persistent store coordinator for the application.
 // If the coordinator doesn't already exist, it is created and the application's store added to it.
@@ -139,12 +206,5 @@
     return _persistentStoreCoordinator;
 }
 
-#pragma mark - Application's Documents directory
-
-// Returns the URL to the application's Documents directory.
-- (NSURL *)applicationDocumentsDirectory
-{
-    return [[[NSFileManager defaultManager] URLsForDirectory:NSDocumentDirectory inDomains:NSUserDomainMask] lastObject];
-}
 
 @end
