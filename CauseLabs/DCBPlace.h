@@ -9,12 +9,13 @@
 #import <Foundation/Foundation.h>
 #import <CoreData/CoreData.h>
 
-
 @interface DCBPlace : NSManagedObject
 
-@property (nonatomic, retain) NSString * facebookID;
-@property (nonatomic, retain) NSString * name;
-@property (nonatomic, retain) NSNumber * latitude;
-@property (nonatomic, retain) NSNumber * longitude;
+@property (nonatomic, strong) NSString *facebookID;
+@property (nonatomic, strong) NSString *name;
+@property (nonatomic, strong) NSNumber *latitude;
+@property (nonatomic, strong) NSNumber *longitude;
+
++ (NSString *)entityName;
 
 @end

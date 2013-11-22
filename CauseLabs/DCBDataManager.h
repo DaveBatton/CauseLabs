@@ -10,9 +10,11 @@
 
 @interface DCBDataManager : NSObject
 
-@property (strong, nonatomic) NSManagedObjectContext *managedObjectContext;
++ (DCBDataManager *)sharedDataManager;
 
-- (void)addPlaceWithID:(NSString *)ID Name:(NSString *)name latitude:(float)latitude longitude:(float)longitude;
+- (void)addPlaceWithID:(NSString *)ID name:(NSString *)name latitude:(float)latitude longitude:(float)longitude;
+- (NSArray *)places;
 - (void)deleteAllPlaces;
+- (void)saveContext;
 
 @end

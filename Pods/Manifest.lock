@@ -1,0 +1,13 @@
+PODS:
+  - Google-Maps-iOS-SDK (1.6.0)
+  - MRProgress (0.2.2)
+
+DEPENDENCIES:
+  - Google-Maps-iOS-SDK
+  - MRProgress
+
+SPEC CHECKSUMS:
+  Google-Maps-iOS-SDK: 4f859a24fd79075696cfaaa3c7bb03aacc83e7e5
+  MRProgress: 51af562344c3fe38ce3c0617fd064f6f1ce55cd5
+
+COCOAPODS: 0.27.1

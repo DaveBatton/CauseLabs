@@ -16,4 +16,14 @@
 @dynamic latitude;
 @dynamic longitude;
 
+
+#pragma mark - Class Methods
+
+
++ (NSString *)entityName
+{
+    return @"Place";
+}
+
+
 @end

@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		70DC492879714E62B5382F48 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DD957A69F9154F1EAB891E46 /* libPods.a */; };
+		B646CB85183EBE9E00A4A441 /* DCBFacebookManager.m in Sources */ = {isa = PBXBuildFile; fileRef = B646CB84183EBE9E00A4A441 /* DCBFacebookManager.m */; };
+		B646CB87183EC06100A4A441 /* FacebookSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B646CB86183EC06100A4A441 /* FacebookSDK.framework */; };
+		B646CB8B183EC5EC00A4A441 /* NSArray+DCBAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = B646CB8A183EC5EC00A4A441 /* NSArray+DCBAdditions.m */; };
 		B6914109183E83540028BDFC /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B6914108183E83540028BDFC /* Foundation.framework */; };
 		B691410B183E83540028BDFC /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B691410A183E83540028BDFC /* CoreGraphics.framework */; };
 		B691410D183E83540028BDFC /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B691410C183E83540028BDFC /* UIKit.framework */; };
@@ -15,10 +19,8 @@
 		B6914117183E83540028BDFC /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = B6914116183E83540028BDFC /* main.m */; };
 		B691411B183E83540028BDFC /* DCBAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B691411A183E83540028BDFC /* DCBAppDelegate.m */; };
 		B691411E183E83540028BDFC /* Main_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B691411C183E83540028BDFC /* Main_iPhone.storyboard */; };
-		B6914121183E83540028BDFC /* Main_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B691411F183E83540028BDFC /* Main_iPad.storyboard */; };
 		B6914124183E83540028BDFC /* CauseLabs.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = B6914122183E83540028BDFC /* CauseLabs.xcdatamodeld */; };
-		B6914127183E83540028BDFC /* DCBMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B6914126183E83540028BDFC /* DCBMainViewController.m */; };
-		B691412A183E83540028BDFC /* DCBFlipsideViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B6914129183E83540028BDFC /* DCBFlipsideViewController.m */; };
+		B6914127183E83540028BDFC /* DCBMapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B6914126183E83540028BDFC /* DCBMapViewController.m */; };
 		B691412C183E83540028BDFC /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B691412B183E83540028BDFC /* Images.xcassets */; };
 		B6914133183E83540028BDFC /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B6914132183E83540028BDFC /* XCTest.framework */; };
 		B6914134183E83540028BDFC /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B6914108183E83540028BDFC /* Foundation.framework */; };
@@ -26,6 +28,9 @@
 		B6914136183E83540028BDFC /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B691410E183E83540028BDFC /* CoreData.framework */; };
 		B691413E183E83540028BDFC /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = B691413C183E83540028BDFC /* InfoPlist.strings */; };
 		B6914140183E83540028BDFC /* CauseLabsTests.m in Sources */ = {isa = PBXBuildFile; fileRef = B691413F183E83540028BDFC /* CauseLabsTests.m */; };
+		B6AB7F9F183F37BC0071C0BA /* DCBDataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = B6AB7F9E183F37BC0071C0BA /* DCBDataManager.m */; };
+		B6AB7FA6183F3BC60071C0BA /* DCBPlace.m in Sources */ = {isa = PBXBuildFile; fileRef = B6AB7FA5183F3BC60071C0BA /* DCBPlace.m */; };
+		B6DF2B64183E965C00227573 /* DCBNotConnectedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B6DF2B62183E965C00227573 /* DCBNotConnectedViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -39,6 +44,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		447BB4D46EB8431F84B8AC38 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
+		B646CB83183EBE9E00A4A441 /* DCBFacebookManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DCBFacebookManager.h; sourceTree = "<group>"; };
+		B646CB84183EBE9E00A4A441 /* DCBFacebookManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DCBFacebookManager.m; sourceTree = "<group>"; };
+		B646CB86183EC06100A4A441 /* FacebookSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FacebookSDK.framework; path = CauseLabs/FacebookSDK.framework; sourceTree = "<group>"; };
+		B646CB89183EC5EC00A4A441 /* NSArray+DCBAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSArray+DCBAdditions.h"; sourceTree = "<group>"; };
+		B646CB8A183EC5EC00A4A441 /* NSArray+DCBAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSArray+DCBAdditions.m"; sourceTree = "<group>"; };
 		B6914105183E83540028BDFC /* CauseLabs.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CauseLabs.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B6914108183E83540028BDFC /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		B691410A183E83540028BDFC /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -51,18 +62,22 @@
 		B6914119183E83540028BDFC /* DCBAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DCBAppDelegate.h; sourceTree = "<group>"; };
 		B691411A183E83540028BDFC /* DCBAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DCBAppDelegate.m; sourceTree = "<group>"; };
 		B691411D183E83540028BDFC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main_iPhone.storyboard; sourceTree = "<group>"; };
-		B6914120183E83540028BDFC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main_iPad.storyboard; sourceTree = "<group>"; };
 		B6914123183E83540028BDFC /* CauseLabs.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = CauseLabs.xcdatamodel; sourceTree = "<group>"; };
-		B6914125183E83540028BDFC /* DCBMainViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DCBMainViewController.h; sourceTree = "<group>"; };
-		B6914126183E83540028BDFC /* DCBMainViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DCBMainViewController.m; sourceTree = "<group>"; };
-		B6914128183E83540028BDFC /* DCBFlipsideViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DCBFlipsideViewController.h; sourceTree = "<group>"; };
-		B6914129183E83540028BDFC /* DCBFlipsideViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DCBFlipsideViewController.m; sourceTree = "<group>"; };
+		B6914125183E83540028BDFC /* DCBMapViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DCBMapViewController.h; sourceTree = "<group>"; };
+		B6914126183E83540028BDFC /* DCBMapViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DCBMapViewController.m; sourceTree = "<group>"; };
 		B691412B183E83540028BDFC /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		B6914131183E83540028BDFC /* CauseLabsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CauseLabsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		B6914132183E83540028BDFC /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		B691413B183E83540028BDFC /* CauseLabsTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "CauseLabsTests-Info.plist"; sourceTree = "<group>"; };
 		B691413D183E83540028BDFC /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		B691413F183E83540028BDFC /* CauseLabsTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CauseLabsTests.m; sourceTree = "<group>"; };
+		B6AB7F9D183F37BC0071C0BA /* DCBDataManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DCBDataManager.h; sourceTree = "<group>"; };
+		B6AB7F9E183F37BC0071C0BA /* DCBDataManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DCBDataManager.m; sourceTree = "<group>"; };
+		B6AB7FA4183F3BC60071C0BA /* DCBPlace.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DCBPlace.h; sourceTree = "<group>"; };
+		B6AB7FA5183F3BC60071C0BA /* DCBPlace.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DCBPlace.m; sourceTree = "<group>"; };
+		B6DF2B61183E965C00227573 /* DCBNotConnectedViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DCBNotConnectedViewController.h; sourceTree = "<group>"; };
+		B6DF2B62183E965C00227573 /* DCBNotConnectedViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DCBNotConnectedViewController.m; sourceTree = "<group>"; };
+		DD957A69F9154F1EAB891E46 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -70,10 +85,12 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B646CB87183EC06100A4A441 /* FacebookSDK.framework in Frameworks */,
 				B691410B183E83540028BDFC /* CoreGraphics.framework in Frameworks */,
 				B691410F183E83540028BDFC /* CoreData.framework in Frameworks */,
 				B691410D183E83540028BDFC /* UIKit.framework in Frameworks */,
 				B6914109183E83540028BDFC /* Foundation.framework in Frameworks */,
+				70DC492879714E62B5382F48 /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -91,6 +108,51 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		B646CB7E183EBDE800A4A441 /* Map View */ = {
+			isa = PBXGroup;
+			children = (
+				B6914125183E83540028BDFC /* DCBMapViewController.h */,
+				B6914126183E83540028BDFC /* DCBMapViewController.m */,
+			);
+			name = "Map View";
+			sourceTree = "<group>";
+		};
+		B646CB80183EBE1A00A4A441 /* Launch View */ = {
+			isa = PBXGroup;
+			children = (
+				B6DF2B61183E965C00227573 /* DCBNotConnectedViewController.h */,
+				B6DF2B62183E965C00227573 /* DCBNotConnectedViewController.m */,
+			);
+			name = "Launch View";
+			sourceTree = "<group>";
+		};
+		B646CB81183EBE5B00A4A441 /* Facebook Manager */ = {
+			isa = PBXGroup;
+			children = (
+				B646CB83183EBE9E00A4A441 /* DCBFacebookManager.h */,
+				B646CB84183EBE9E00A4A441 /* DCBFacebookManager.m */,
+			);
+			name = "Facebook Manager";
+			sourceTree = "<group>";
+		};
+		B646CB82183EBE7400A4A441 /* View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				B646CB80183EBE1A00A4A441 /* Launch View */,
+				B646CB7E183EBDE800A4A441 /* Map View */,
+			);
+			name = "View Controllers";
+			sourceTree = "<group>";
+		};
+		B646CB88183EC50700A4A441 /* Categories */ = {
+			isa = PBXGroup;
+			children = (
+				B646CB89183EC5EC00A4A441 /* NSArray+DCBAdditions.h */,
+				B646CB8A183EC5EC00A4A441 /* NSArray+DCBAdditions.m */,
+			);
+			name = Categories;
+			sourceTree = "<group>";
+		};
 		B69140FC183E83540028BDFC = {
 			isa = PBXGroup;
 			children = (
@@ -98,6 +160,7 @@
 				B6914139183E83540028BDFC /* CauseLabsTests */,
 				B6914107183E83540028BDFC /* Frameworks */,
 				B6914106183E83540028BDFC /* Products */,
+				447BB4D46EB8431F84B8AC38 /* Pods.xcconfig */,
 			);
 			sourceTree = "<group>";
 		};
@@ -113,11 +176,13 @@
 		B6914107183E83540028BDFC /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				B646CB86183EC06100A4A441 /* FacebookSDK.framework */,
 				B6914108183E83540028BDFC /* Foundation.framework */,
 				B691410A183E83540028BDFC /* CoreGraphics.framework */,
 				B691410C183E83540028BDFC /* UIKit.framework */,
 				B691410E183E83540028BDFC /* CoreData.framework */,
 				B6914132183E83540028BDFC /* XCTest.framework */,
+				DD957A69F9154F1EAB891E46 /* libPods.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -128,13 +193,11 @@
 				B6914119183E83540028BDFC /* DCBAppDelegate.h */,
 				B691411A183E83540028BDFC /* DCBAppDelegate.m */,
 				B691411C183E83540028BDFC /* Main_iPhone.storyboard */,
-				B691411F183E83540028BDFC /* Main_iPad.storyboard */,
-				B6914125183E83540028BDFC /* DCBMainViewController.h */,
-				B6914126183E83540028BDFC /* DCBMainViewController.m */,
-				B6914128183E83540028BDFC /* DCBFlipsideViewController.h */,
-				B6914129183E83540028BDFC /* DCBFlipsideViewController.m */,
+				B646CB82183EBE7400A4A441 /* View Controllers */,
+				B646CB81183EBE5B00A4A441 /* Facebook Manager */,
+				B6AB7FA0183F37C30071C0BA /* Data Manager */,
+				B646CB88183EC50700A4A441 /* Categories */,
 				B691412B183E83540028BDFC /* Images.xcassets */,
-				B6914122183E83540028BDFC /* CauseLabs.xcdatamodeld */,
 				B6914111183E83540028BDFC /* Supporting Files */,
 			);
 			path = CauseLabs;
@@ -169,6 +232,18 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		B6AB7FA0183F37C30071C0BA /* Data Manager */ = {
+			isa = PBXGroup;
+			children = (
+				B6AB7F9D183F37BC0071C0BA /* DCBDataManager.h */,
+				B6AB7F9E183F37BC0071C0BA /* DCBDataManager.m */,
+				B6914122183E83540028BDFC /* CauseLabs.xcdatamodeld */,
+				B6AB7FA4183F3BC60071C0BA /* DCBPlace.h */,
+				B6AB7FA5183F3BC60071C0BA /* DCBPlace.m */,
+			);
+			name = "Data Manager";
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -176,9 +251,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = B6914143183E83540028BDFC /* Build configuration list for PBXNativeTarget "CauseLabs" */;
 			buildPhases = (
+				56AE4D6C02A64959A89D47F8 /* Check Pods Manifest.lock */,
 				B6914101183E83540028BDFC /* Sources */,
 				B6914102183E83540028BDFC /* Frameworks */,
 				B6914103183E83540028BDFC /* Resources */,
+				87C9A94CB6124569ACC3EBA2 /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -217,6 +294,9 @@
 				LastUpgradeCheck = 0500;
 				ORGANIZATIONNAME = "Dave Batton";
 				TargetAttributes = {
+					B6914104183E83540028BDFC = {
+						DevelopmentTeam = EA4UDNB69G;
+					};
 					B6914130183E83540028BDFC = {
 						TestTargetID = B6914104183E83540028BDFC;
 					};
@@ -246,7 +326,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B6914121183E83540028BDFC /* Main_iPad.storyboard in Resources */,
 				B691412C183E83540028BDFC /* Images.xcassets in Resources */,
 				B691411E183E83540028BDFC /* Main_iPhone.storyboard in Resources */,
 				B6914115183E83540028BDFC /* InfoPlist.strings in Resources */,
@@ -263,16 +342,53 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		56AE4D6C02A64959A89D47F8 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		87C9A94CB6124569ACC3EBA2 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Pods-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		B6914101183E83540028BDFC /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B6AB7FA6183F3BC60071C0BA /* DCBPlace.m in Sources */,
 				B691411B183E83540028BDFC /* DCBAppDelegate.m in Sources */,
+				B6AB7F9F183F37BC0071C0BA /* DCBDataManager.m in Sources */,
 				B6914124183E83540028BDFC /* CauseLabs.xcdatamodeld in Sources */,
+				B6DF2B64183E965C00227573 /* DCBNotConnectedViewController.m in Sources */,
 				B6914117183E83540028BDFC /* main.m in Sources */,
-				B691412A183E83540028BDFC /* DCBFlipsideViewController.m in Sources */,
-				B6914127183E83540028BDFC /* DCBMainViewController.m in Sources */,
+				B646CB8B183EC5EC00A4A441 /* NSArray+DCBAdditions.m in Sources */,
+				B6914127183E83540028BDFC /* DCBMapViewController.m in Sources */,
+				B646CB85183EBE9E00A4A441 /* DCBFacebookManager.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -309,14 +425,6 @@
 				B691411D183E83540028BDFC /* Base */,
 			);
 			name = Main_iPhone.storyboard;
-			sourceTree = "<group>";
-		};
-		B691411F183E83540028BDFC /* Main_iPad.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				B6914120183E83540028BDFC /* Base */,
-			);
-			name = Main_iPad.storyboard;
 			sourceTree = "<group>";
 		};
 		B691413C183E83540028BDFC /* InfoPlist.strings */ = {
@@ -406,26 +514,40 @@
 		};
 		B6914144183E83540028BDFC /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 447BB4D46EB8431F84B8AC38 /* Pods.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					/Users/davebatton/Documents/Development/DCB/CauseLabs/CauseLabs/CauseLabs,
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "CauseLabs/CauseLabs-Prefix.pch";
 				INFOPLIST_FILE = "CauseLabs/CauseLabs-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
 		};
 		B6914145183E83540028BDFC /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 447BB4D46EB8431F84B8AC38 /* Pods.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					/Users/davebatton/Documents/Development/DCB/CauseLabs/CauseLabs/CauseLabs,
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "CauseLabs/CauseLabs-Prefix.pch";
 				INFOPLIST_FILE = "CauseLabs/CauseLabs-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
@@ -491,6 +613,7 @@
 				B6914145183E83540028BDFC /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		B6914146183E83540028BDFC /* Build configuration list for PBXNativeTarget "CauseLabsTests" */ = {
 			isa = XCConfigurationList;
@@ -499,6 +622,7 @@
 				B6914148183E83540028BDFC /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 

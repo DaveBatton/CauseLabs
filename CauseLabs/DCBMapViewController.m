@@ -8,6 +8,8 @@
 
 #import "DCBMapViewController.h"
 #import "DCBFacebookManager.h"
+#import "DCBDataManager.h"
+#import "DCBPlace.h"
 #import "NSArray+DCBAdditions.h"
 #import "MRProgress.h"
 #import <GoogleMaps/GoogleMaps.h>
@@ -23,15 +25,27 @@ const NSInteger DCBMapViewControllerMaxPlaces = 25;
 @property (nonatomic, weak) IBOutlet GMSMapView *mapView;
 
 // Private
-@property (nonatomic, strong) NSArray *places;
-@property (nonatomic, strong) GMSMarker *centerMarker;
-@property (nonatomic, strong) NSMutableArray *placeMarkers;
+@property (nonatomic, strong) NSArray *places;  // Facebook FBGraphPlace objects.
+@property (nonatomic, strong) GMSMarker *centerMarker;  // We search around this location.
+@property (nonatomic, strong) NSMutableArray *placeMarkers;  // Google GMSMarker objects.
 @property (nonatomic, strong) MRProgressOverlayView *progressView;
 
 @end
 
 
 @implementation DCBMapViewController
+
+
+#pragma mark - Setup & Teardown
+
+
+- (void)dealloc
+{
+    [self stopListeningForNotifications];
+}
+
+
+#pragma mark - UIViewController
 
 
 - (void)viewDidLoad
@@ -49,12 +63,15 @@ const NSInteger DCBMapViewControllerMaxPlaces = 25;
     self.centerMarker.map = self.mapView;
 
     self.placeMarkers = [NSMutableArray arrayWithCapacity:DCBMapViewControllerMaxPlaces];
+    [self loadSavedPlaces];
 
     self.progressView = [[MRProgressOverlayView alloc] init];
     self.progressView.hidden = YES;
     [self.view addSubview:self.progressView];
 
     [self updateMap];
+
+    [self startListeningForNotifications];
 }
 
 
@@ -73,7 +90,7 @@ const NSInteger DCBMapViewControllerMaxPlaces = 25;
 
 - (void)loadNewPlaces
 {
-    [self removeAllPlaces];
+    [self removeAllPlaceMarkers];
 
     self.progressView.mode = MRProgressOverlayViewModeIndeterminate;
     self.progressView.titleLabelText = @"Loading random places from Facebook...";
@@ -83,7 +100,7 @@ const NSInteger DCBMapViewControllerMaxPlaces = 25;
     [DCBFacebookManager findPlacesNearCoordinate:self.centerMarker.position
                                         distance:meters
                                       completion:^(NSMutableArray *places, NSError *error) {
-                                          self.places = [places randomObjects:25];
+                                          self.places = [places randomObjects:DCBMapViewControllerMaxPlaces];
 
                                           self.progressView.mode = MRProgressOverlayViewModeCheckmark;
                                           self.progressView.titleLabelText = [NSString stringWithFormat:@"%lu places found.", (unsigned long)[self.places count]];
@@ -110,7 +127,7 @@ const NSInteger DCBMapViewControllerMaxPlaces = 25;
 
 - (void)updateMap
 {
-    [self removeAllPlaces];
+    [self removeAllPlaceMarkers];
 
     GMSCoordinateBounds *bounds = [[GMSCoordinateBounds alloc] initWithCoordinate:self.self.centerMarker.position coordinate:self.centerMarker.position];
 
@@ -135,7 +152,7 @@ const NSInteger DCBMapViewControllerMaxPlaces = 25;
 }
 
 
-- (void)removeAllPlaces
+- (void)removeAllPlaceMarkers
 {
     // Remove all of the markers from the map (except the centerMarker).
     for (GMSMarker *marker in self.placeMarkers) {
@@ -147,8 +164,38 @@ const NSInteger DCBMapViewControllerMaxPlaces = 25;
 
 - (void)savePlaces
 {
-    
+    [[DCBDataManager sharedDataManager] deleteAllPlaces];
+
+    for (id<FBGraphPlace> place in self.places) {
+        [[DCBDataManager sharedDataManager] addPlaceWithID:place.id
+                                                      name:place.name
+                                                  latitude:[place.location.latitude floatValue]
+                                                 longitude:[place.location.longitude floatValue]];
+    }
+
+    [[DCBDataManager sharedDataManager] saveContext];
 }
+
+
+- (void)loadSavedPlaces
+{
+    NSArray *savedPlaces = [[DCBDataManager sharedDataManager] places];  // These are DCBPlace objects.
+
+    NSMutableArray *places = [NSMutableArray arrayWithCapacity:[savedPlaces count]];  // These will be FBGraphPlace objects.
+
+    for (DCBPlace *savedPlace in savedPlaces) {
+        id<FBGraphPlace> place = (FBGraphObject<FBGraphPlace> *)[FBGraphObject graphObject];
+        place.id = savedPlace.facebookID;
+        place.name = savedPlace.name;
+        place.location = (FBGraphObject<FBGraphLocation> *)[FBGraphObject graphObject];
+        place.location.latitude = savedPlace.latitude;
+        place.location.longitude = savedPlace.longitude;
+        [places addObject:place];
+    }
+
+    self.places = [places copy];
+}
+
 
 #pragma mark - GMSMapViewDelegate
 
@@ -169,15 +216,41 @@ const NSInteger DCBMapViewControllerMaxPlaces = 25;
 - (void)startListeningForNotifications
 {
     [[NSNotificationCenter defaultCenter] addObserver:self
-                                             selector:@selector(applicationWillTerminateNotification:)
-                                                 name:UIApplicationWillTerminateNotification
+                                             selector:@selector(applicationWillResignActive:)
+                                                 name:UIApplicationWillResignActiveNotification
+                                               object:nil];
+
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(facebookManagerDidLogoutOfFacebook:)
+                                                 name:DCBFacebookManagerDidLogoutOfFacebookNotification
                                                object:nil];
 }
 
 
-- (void)applicationWillTerminateNotification:(NSNotification *)notification
+- (void)stopListeningForNotifications
+{
+    [[NSNotificationCenter defaultCenter] removeObserver:self
+                                                    name:UIApplicationWillResignActiveNotification
+                                                  object:nil];
+
+    [[NSNotificationCenter defaultCenter] removeObserver:self
+                                                    name:DCBFacebookManagerDidLogoutOfFacebookNotification
+                                                  object:nil];
+}
+
+
+- (void)applicationWillResignActive:(NSNotification *)notification
 {
     [self savePlaces];
+}
+
+
+- (void)facebookManagerDidLogoutOfFacebook:(NSNotification *)notification
+// Clear any data we got from the user's account.
+{
+    self.places = nil;
+    [self.placeMarkers removeAllObjects];
+    [self updateMap];
 }
 
 
@@ -206,5 +279,6 @@ const NSInteger DCBMapViewControllerMaxPlaces = 25;
         [self updateMap];
     }
 }
+
 
 @end
